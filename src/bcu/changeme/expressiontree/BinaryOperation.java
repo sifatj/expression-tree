@@ -26,10 +26,17 @@ abstract public class BinaryOperation extends Expression {
 	@Override
 	public final Set<String> freeVariables() {
 		Set<String> variables = new HashSet<>();
-		
 		variables.addAll(left.freeVariables());
 		variables.addAll(right.freeVariables());
-		
 		return Collections.unmodifiableSet(variables);
 	}
+	
+	
+	abstract public String getSymbol();
+	
+	@Override
+	public String toString() {
+		return "(" + left.toString() + getSymbol() + right.toString() + ")";
+	}
+
 }
